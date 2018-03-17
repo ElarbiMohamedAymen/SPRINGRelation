@@ -19,7 +19,7 @@ public class Magasin implements Serializable {
 	private String nom;
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToMany(mappedBy="ListMagasin")
+	@ManyToMany(mappedBy="listMagasin")
 	private List<Produit>listProduit;
 
 	public Magasin() {
