@@ -15,12 +15,13 @@ public class Categorie implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCategorie;
 	private String nom;
 	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	private Categorie parentCategorie;
-	@OneToMany(mappedBy="parentCategorie")
+	@OneToMany(mappedBy="parentCategorie",cascade=CascadeType.MERGE)
 	private Set<Categorie>listSousCategorie;
 
 	public Set<Categorie> getListSousCategorie() {
