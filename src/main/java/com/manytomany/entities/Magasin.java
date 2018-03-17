@@ -15,6 +15,7 @@ public class Magasin implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idMagasin;
 	private String nom;
 	private static final long serialVersionUID = 1L;

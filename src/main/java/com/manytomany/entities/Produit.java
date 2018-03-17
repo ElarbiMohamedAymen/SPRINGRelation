@@ -16,6 +16,7 @@ public class Produit implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idProduit;
 	private String libelle;
 	private static final long serialVersionUID = 1L;

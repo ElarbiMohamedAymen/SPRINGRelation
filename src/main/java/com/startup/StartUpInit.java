@@ -12,11 +12,13 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.manytomany.repository.ManytoManyRepository;
+import com.manytomany.entities.Magasin;
+import com.manytomany.entities.Produit;
+import com.manytomany.repository.ManytoManyMAGASINRepository;
+import com.manytomany.repository.ManytoManyPRODUITRepository;
 import com.onetomany.entities.Clients;
 import com.onetomany.entities.Compte;
 import com.onetomany.repository.OnetoManyClientRepository;
-import com.onetomany.repository.OnetoManyCompteRepository;
 import com.onetoone.entities.Address;
 import com.onetoone.entities.Person;
 import com.onetoone.repository.OnetoOneRepository;
@@ -28,7 +30,9 @@ import com.reflexive.repository.ReflexiveRepository;
 public class StartUpInit implements ApplicationRunner {
 
 	@Autowired
-	private ManytoManyRepository manytomany;
+	private ManytoManyPRODUITRepository manytomanyProduit;
+	@Autowired
+	private ManytoManyMAGASINRepository manytomanyMagasin;
 	@Autowired
 	private OnetoManyClientRepository onetomanyClient;
 	@Autowired
@@ -94,5 +98,42 @@ public class StartUpInit implements ApplicationRunner {
 		reflexive.save(categorieParent);
 		reflexive.save(categorieFille);
 		reflexive.save(categorieFilleFille);
+		
+		/**
+		 * Many To Many
+		 */
+		
+		Magasin mg = new Magasin();
+		mg.setNom("MG");
+		
+		Magasin carrefour = new Magasin();
+		carrefour.setNom("CARREFOUR");
+		
+		Produit produit1 = new Produit();
+		produit1.setLibelle("COCA-COLA");
+		
+		Produit produit2 = new Produit();
+		produit2.setLibelle("FANTA CITRON");
+		
+		List<Magasin> magasins = new ArrayList<>();
+		magasins.add(mg);
+		magasins.add(carrefour);
+		
+		List<Produit> produits = new ArrayList<>();
+		produits.add(produit1);
+		produits.add(produit2);
+		
+		mg.setListProduit(produits);
+		carrefour.setListProduit(produits);
+		
+		produit1.setListMagasin(magasins);
+		produit2.setListMagasin(magasins);
+		
+		manytomanyMagasin.save(mg);
+		manytomanyMagasin.save(carrefour);
+		
+		manytomanyProduit.save(produit1);
+		manytomanyProduit.save(produit2);
+		
 	}
 }

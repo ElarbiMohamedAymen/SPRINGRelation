@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.manytomany.entities.Magasin;
 
 @Repository
-public interface ManytoManyRepository extends CrudRepository<Magasin, Integer> {
+public interface ManytoManyMAGASINRepository extends CrudRepository<Magasin, Integer> {
 
 }
