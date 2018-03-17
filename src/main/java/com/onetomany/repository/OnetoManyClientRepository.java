@@ -3,9 +3,9 @@ package com.onetomany.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.manytomany.entities.Magasin;
+import com.onetomany.entities.Clients;
 
 @Repository
-public interface OnetoManyRepository extends CrudRepository<Magasin, Integer> {
+public interface OnetoManyClientRepository extends CrudRepository<Clients, Integer> {
 
 }
