@@ -4,5 +4,6 @@ jdk:
 - oraclejdk8
 before_install:
   - chmod +x mvnw
+  - mysql -e 'CREATE DATABASE relations;'
 install:
 - mvn install  -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
