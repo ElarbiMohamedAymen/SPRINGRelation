@@ -11,6 +11,7 @@ public class SpringRelationApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		Assert.assertTrue(true);
 	}
 
 }
